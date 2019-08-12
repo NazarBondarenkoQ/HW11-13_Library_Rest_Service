@@ -1,4 +1,7 @@
-package edu.spring.hw11.library;
+package edu.spring.hw11.library.controllers;
+
+import edu.spring.hw11.library.models.Author;
+import edu.spring.hw11.library.models.Book;
 
 import java.util.List;
 

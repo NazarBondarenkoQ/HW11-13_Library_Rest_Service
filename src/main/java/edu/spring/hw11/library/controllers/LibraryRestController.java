@@ -1,5 +1,8 @@
-package edu.spring.hw11.library;
+package edu.spring.hw11.library.controllers;
 
+import edu.spring.hw11.library.controllers.LibraryServiceInterface;
+import edu.spring.hw11.library.models.Author;
+import edu.spring.hw11.library.models.Book;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,18 +14,21 @@ public class LibraryRestController {
 
     LibraryServiceInterface libraryServiceInterface;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    @GetMapping("/{id}")
     public List<Book> sortedBookByAuthor(@PathVariable("id") int id) {
         return libraryServiceInterface.sortBookByAuthor(id);
     }
 
-    @RequestMapping(value = "/{genre}/get", method = RequestMethod.GET)
+    @ResponseBody
+    @GetMapping("/book/{genre}")
     public List<Book> sortedBookByGenre(@PathVariable("genre") String genre) {
         return libraryServiceInterface.sortBookByGenre(genre);
     }
 
 
-    @RequestMapping(value = "/author", method = RequestMethod.POST)
+    @ResponseBody
+    @PostMapping("author/add")
     public List<Author> addAuthor(
             @RequestParam(value = "authorId") int authorId,
             @RequestParam(value = "authorFName") String authorFName,
@@ -31,7 +37,8 @@ public class LibraryRestController {
         return libraryServiceInterface.addAuthor(authorId, authorFName, authorLName);
     }
 
-    @RequestMapping(value = "/book", method = RequestMethod.POST)
+    @ResponseBody
+    @PostMapping("book/add")
     public List<Book> addBook(
             @RequestParam(value = "bookId") int bookId,
             @RequestParam(value = "bookTitle") String bookTitle,
@@ -42,7 +49,8 @@ public class LibraryRestController {
         return libraryServiceInterface.addBook(bookId, bookTitle, bookGenre, bookDesc, bookRate);
     }
 
-    @RequestMapping(value = "/author/book", method = RequestMethod.PUT)
+    @ResponseBody
+    @PutMapping("book/add/author")
     public Map<Integer, Book> addBookToAuthor(
             @RequestParam(value = "authorId") int authorId,
             @RequestParam(value = "bookId") int bookId,
@@ -58,12 +66,14 @@ public class LibraryRestController {
         return map;
     }
 
-    @RequestMapping(value = "/author/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @DeleteMapping("author/{id}")
     public List<Author> deleteAuthor(@PathVariable("id") int authorId) {
         return libraryServiceInterface.deleteAuthor(authorId);
     }
 
-    @RequestMapping(value = "/book/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @DeleteMapping("book/{id}")
     public List<Book> deleteBook(@PathVariable("id") int bookId) {
         return libraryServiceInterface.deleteBook(bookId);
     }

@@ -1,4 +1,4 @@
-package edu.spring.hw11.library;
+package edu.spring.hw11.library.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,18 +11,18 @@ import java.util.Set;
 @Getter
 @Setter
 public class Author {
-    public int id;
-    public String fName;
-    public String lName;
-    public Set<Book> book = new HashSet<>();
+    private int id;
+    private String fName;
+    private String lName;
+    private Set<Book> book = new HashSet<>();
 
-    Author(int id, String fName, String lName) {
+    public Author(int id, String fName, String lName) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
     }
 
-     void setBook(Book book1) {
+     public void setBook(Book book1) {
         book.add(book1);
     }
 }
