@@ -147,11 +147,28 @@ VALUES (
 'Russia',
 '32'
 );
-SELECT * FROM author JOIN book;
 
 SELECT * FROM `book` ORDER BY genre;
 
 SELECT `title`, `genre` FROM `book` ORDER BY rate
 
 SELECT MAX(rate) FROM book
+
+ALTER TABLE book
+ADD author_id INT;
+
+UPDATE `book` SET `author_id` = '8' WHERE `book`.`id` = 1;
+UPDATE `book` SET `author_id` = '8' WHERE `book`.`id` = 2;
+UPDATE `book` SET `author_id` = '1' WHERE `book`.`id` = 3;
+UPDATE `book` SET `author_id` = '1' WHERE `book`.`id` = 4;
+UPDATE `book` SET `author_id` = '1' WHERE `book`.`id` = 5;
+UPDATE `book` SET `author_id` = '2' WHERE `book`.`id` = 6;
+UPDATE `book` SET `author_id` = '3' WHERE `book`.`id` = 7;
+UPDATE `book` SET `author_id` = '4' WHERE `book`.`id` = 8;
+
+SELECT author.firstName, author.lastName FROM author INNER JOIN book ON book.author_id = author.id
+
+SELECT book.author_id FROM book GROUP BY book.author_id ORDER BY COUNT(*) DESC LIMIT 1
+
+SELECT book.title, book.genre, book.description FROM book WHERE book.author_id = 1
 
