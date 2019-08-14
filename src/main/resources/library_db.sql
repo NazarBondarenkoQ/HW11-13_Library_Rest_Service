@@ -154,6 +154,8 @@ SELECT `title`, `genre` FROM `book` ORDER BY rate
 
 SELECT MAX(rate) FROM book
 
+SELECT MAX(age) FROM author
+
 ALTER TABLE book
 ADD author_id INT;
 
