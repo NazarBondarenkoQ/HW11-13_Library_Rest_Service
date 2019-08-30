@@ -1,4 +1,4 @@
-package edu.cursor.librestapi;
+package edu.spring.hw11;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LibrestapiApplicationTests {
+public class Hw11ApplicationTests {
 
     @Test
     public void contextLoads() {
